@@ -132,21 +132,19 @@ class _TableItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final boxDecoration = BoxDecoration(
-        color: const Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(25));
-
     final heigth = MediaQuery.of(context).size.height;
 
     return Container(
       margin: const EdgeInsets.all(20),
-      height: heigth * 0.225,
-      decoration: boxDecoration,
-      child: _BodyTableItem(
-        firstColor: firstColor,
-        secondColor: secondColor,
-        icon: icon,
-        texto: texto,
+      child: BlurBackground(
+        height: heigth * 0.225,
+        bgColor: const Color.fromRGBO(62, 66, 107, 0.7),
+        child: _BodyTableItem(
+          firstColor: firstColor,
+          secondColor: secondColor,
+          icon: icon,
+          texto: texto,
+        ),
       ),
     );
   }
