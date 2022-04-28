@@ -134,17 +134,15 @@ class _TableItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final heigth = MediaQuery.of(context).size.height;
 
-    return Container(
+    return BlurBackground(
       margin: const EdgeInsets.all(20),
-      child: BlurBackground(
-        height: heigth * 0.225,
-        bgColor: const Color.fromRGBO(62, 66, 107, 0.7),
-        child: _BodyTableItem(
-          firstColor: firstColor,
-          secondColor: secondColor,
-          icon: icon,
-          texto: texto,
-        ),
+      height: heigth * 0.225,
+      backGroundColor: const Color.fromRGBO(62, 66, 107, 0.7),
+      child: _BodyTableItem(
+        firstColor: firstColor,
+        secondColor: secondColor,
+        icon: icon,
+        texto: texto,
       ),
     );
   }

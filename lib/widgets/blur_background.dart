@@ -14,7 +14,8 @@ class BlurBackground extends StatelessWidget {
     required this.height,
     this.width = double.infinity,
     this.padding = defaultPadding,
-    this.bgColor = defaultColor,
+    this.backGroundColor = defaultColor,
+    this.margin = EdgeInsets.zero,
     this.borderRadius = defayultBorderRadius,
   }) : super(key: key);
 
@@ -22,23 +23,27 @@ class BlurBackground extends StatelessWidget {
   final double blur;
   final double? height, width;
   final EdgeInsetsGeometry padding;
-  final Color bgColor;
+  final Color backGroundColor;
   final BorderRadius borderRadius;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: borderRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-        child: Container(
-          height: height!,
-          width: width!,
-          padding: padding,
-          color: bgColor == Colors.transparent
-              ? bgColor
-              : bgColor.withOpacity(0.5),
-          child: child,
+    return Container(
+      margin: margin,
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: Container(
+            height: height!,
+            width: width!,
+            padding: padding,
+            color: backGroundColor == Colors.transparent
+                ? backGroundColor
+                : backGroundColor.withOpacity(0.5),
+            child: child,
+          ),
         ),
       ),
     );
